@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEPA Transfer Manager - Bonifici Istantanei</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>💳 SEPA Transfer Manager</h1>
+            <p class="subtitle">Bonifici SEPA Istantanei Online</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Form Sezione -->
+            <section class="form-section">
+                <h2>Nuovo Bonifico SEPA</h2>
+                
+                <form id="bonificoForm" class="bonifico-form">
+                    <!-- Dati Ordinante -->
+                    <fieldset class="form-group">
+                        <legend>Dati Ordinante</legend>
+                        
+                        <div class="form-field">
+                            <label for="nomeOrdinante">Nome Ordinante *</label>
+                            <input type="text" id="nomeOrdinante" name="nomeOrdinante" required placeholder="Es: Mario Rossi">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="ibanOrdinante">IBAN Ordinante *</label>
+                            <input type="text" id="ibanOrdinante" name="ibanOrdinante" required placeholder="Es: IT60X0542811101000000123456">
+                        </div>
+                    </fieldset>
+
+                    <!-- Dati Beneficiario -->
+                    <fieldset class="form-group">
+                        <legend>Dati Beneficiario</legend>
+                        
+                        <div class="form-field">
+                            <label for="nomeBeneficiario">Nome Beneficiario *</label>
+                            <input type="text" id="nomeBeneficiario" name="nomeBeneficiario" required placeholder="Es: Luigi Bianchi">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="ibanBeneficiario">IBAN Beneficiario *</label>
+                            <input type="text" id="ibanBeneficiario" name="ibanBeneficiario" required placeholder="Es: IT80R0000000000000000123456">
+                        </div>
+                    </fieldset>
+
+                    <!-- Dati Bonifico -->
+                    <fieldset class="form-group">
+                        <legend>Importo e Causale</legend>
+                        
+                        <div class="form-field">
+                            <label for="importo">Importo (€) *</label>
+                            <input type="number" id="importo" name="importo" required step="0.01" min="0.01" placeholder="Es: 100.00">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="causale">Causale *</label>
+                            <input type="text" id="causale" name="causale" required placeholder="Es: Pagamento fattura">
+                        </div>
+                    </fieldset>
+
+                    <!-- Button -->
+                    <button type="submit" class="btn-submit">✅ Invia Bonifico SEPA</button>
+                </form>
+            </section>
+
+            <!-- Statistiche Sezione -->
+            <section class="stats-section">
+                <h2>📊 Statistiche Bonifici</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Totale Bonifici</h3>
+                        <p class="stat-value" id="totalBonifici">0</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Importo Totale</h3>
+                        <p class="stat-value" id="importoTotale">€ 0,00</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Importo Medio</h3>
+                        <p class="stat-value" id="importoMedio">€ 0,00</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Storico Sezione -->
+            <section class="history-section">
+                <h2>📜 Storico Bonifici</h2>
+                
+                <div id="storicoContainer" class="storico-container">
+                    <p class="empty-message">Nessun bonifico registrato. Invia il tuo primo bonifico!</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 SEPA Transfer Manager - Bonifici Istantanei</p>
+            <p>Versione Web 1.0.0</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
