@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEPA Transfer Manager - Web Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏦 SEPA Transfer Manager</h1>
+            <p>Bonifici SEPA Istantanei Reali</p>
+        </header>
+
+        <div class="dashboard">
+            <!-- STATISTICHE -->
+            <section class="stats-section">
+                <h2>📊 Statistiche</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-transfers">0</div>
+                        <div class="stat-label">Bonifici Totali</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="completed-transfers">0</div>
+                        <div class="stat-label">Completati</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-amount">€ 0,00</div>
+                        <div class="stat-label">Importo Totale</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FORM INVIO BONIFICO -->
+            <section class="form-section">
+                <h2>✉️ Nuovo Bonifico</h2>
+                <form id="transfer-form" class="transfer-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>👤 Nome Ordinante</label>
+                            <input type="text" id="sender_name" placeholder="Es: VITTORIO GIOVANNI CATTABRIGA" required>
+                        </div>
+                        <div class="form-group">
+                            <label>📤 IBAN Ordinante</label>
+                            <input type="text" id="sender_iban" placeholder="Es: IT60X0542811101000000123456" required>
+                        </div>
+                        <div class="form-group">
+                            <label>👥 Nome Beneficiario</label>
+                            <input type="text" id="recipient_name" placeholder="Es: Mario Rossi" required>
+                        </div>
+                        <div class="form-group">
+                            <label>📥 IBAN Beneficiario</label>
+                            <input type="text" id="recipient_iban" placeholder="Es: IT80R0000000000000000123456" required>
+                        </div>
+                        <div class="form-group">
+                            <label>💰 Importo (EUR)</label>
+                            <input type="number" id="amount" placeholder="Es: 100.50" step="0.01" min="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label>📝 Causale</label>
+                            <input type="text" id="reason" placeholder="Es: Pagamento fattura">
+                        </div>
+                        <div class="form-group">
+                            <label>⚡ Tipo Bonifico</label>
+                            <select id="is_instant">
+                                <option value="true">SEPA Istantaneo ⚡ (Max 15.000€)</option>
+                                <option value="false">SEPA Standard 📅</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-send">✅ Invia Bonifico</button>
+                </form>
+                <div id="form-status" class="form-status"></div>
+            </section>
+
+            <!-- STORICO BONIFICI -->
+            <section class="history-section">
+                <h2>📋 Storico Bonifici</h2>
+                <div id="transfers-container" class="transfers-list">
+                    <p class="loading">⏳ Caricamento...</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
